@@ -56,7 +56,7 @@ ROOT_URLCONF = 'tascii_prototype.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["tascii_prototype/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

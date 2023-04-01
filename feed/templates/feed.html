@@ -1,1 +1,22 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
 <h1>THIS IS THE FEED PAGE!!!</h1>
+<div class="col-md-4">
+    {% for post in posts %}
+        <div class="post">
+            <div class="post-body">
+                <h5 class="post-title">{{ post.title }}</h5>
+                <h4 class="price">{{ post.price }}</h4>
+                <p class="post-text">{{ post.start_loc }} -> {{ post.end_loc }}</p>
+                <p class="post-text">By {{ post.expiration_date }}</p>
+                <p class="post-text">~ {{ post.time_estimate }}</p>
+                <a href="{% url 'post_details' post.pk %}">More Info</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
