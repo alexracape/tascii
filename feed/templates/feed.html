@@ -13,7 +13,7 @@
                 <p class="post-text">{{ post.start_loc }} -> {{ post.end_loc }}</p>
                 <p class="post-text">By {{ post.expiration_date }}</p>
                 <p class="post-text">~ {{ post.time_estimate }}</p>
-                <a href="{% url 'post_details' post.pk %}">More Info</a>
+                <a href="{% url 'post_details' post.pk %}">Accept</a>
             </div>
         </div>
     {% endfor %}
