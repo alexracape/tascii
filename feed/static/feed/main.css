@@ -73,3 +73,7 @@ body {
     opacity: 1;
     text-align: center;
   }
+
+  .text-gray {
+    color: #b3b3b3;
+  }
