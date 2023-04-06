@@ -2,15 +2,36 @@
 
 {% block page_content %}
 
-<h1>{{ post.title }}</h1>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Price: {{ post.price }}</h2>
-        <h2>Start Location: {{ post.start_loc }}</h2>
-        <h2>End Location: {{ post.end_loc }}</h2>
-        <h2>Expiration Date: {{ post.expiration_date }}</h2>
-        <h2>Time Estimate: {{ post.time_estimate }}</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h3 class="card-title">{{ post.title }}</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-text">Price: {{ post.price }}</h4>
+              <h4 class="card-text">Start Location: {{ post.start_loc }}</h4>
+              <h4 class="card-text">End Location: {{ post.end_loc }}</h4>
+            </div>
+            <div class="col-md-6">
+              <h4 class="card-text">Expiration Date: {{ post.expiration_date }}</h4>
+              <h4 class="card-text">Time Estimate: {{ post.time_estimate }}</h4>
+              <h4 class="card-text">Posted On: {{ post.created_at }}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <form method="POST" action="{% url 'post_accept' post.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Accept</button>
+          </form>
+          <a href="{% url 'post_list' %}" class="btn btn-danger">Cancel</a>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </div>
 {% endblock %}
