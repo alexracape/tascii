@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block page_content %}
@@ -13,14 +12,14 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h4 class="card-text">Price: {{ post.price }}</h4>
-              <h4 class="card-text">Start Location: {{ post.start_loc }}</h4>
-              <h4 class="card-text">End Location: {{ post.end_loc }}</h4>
+              <h4 class="card-text"><span class="text-dark">Price:</span> {{ post.price }}</h4>
+              <h4 class="card-text"><span class="text-dark">Start Location:</span> {{ post.start_loc }}</h4>
+              <h4 class="card-text"><span class="text-dark">End Location:</span> {{ post.end_loc }}</h4>
             </div>
             <div class="col-md-6">
-              <h4 class="card-text">Expiration Date: {{ post.expiration_date }}</h4>
-              <h4 class="card-text">Time Estimate: {{ post.time_estimate }}</h4>
-              <h4 class="card-text">Posted On: {{ post.created_at }}</h4>
+              <h4 class="card-text"><span class="text-dark">Expiration Date:</span> {{ post.expiration_date }}</h4>
+              <h4 class="card-text"><span class="text-dark">Time Estimate:</span> {{ post.time_estimate }}</h4>
+              <h4 class="card-text"><span class="text-dark">Posted On:</span> {{ post.created_at }}</h4>
             </div>
           </div>
         </div>
@@ -35,4 +34,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}
