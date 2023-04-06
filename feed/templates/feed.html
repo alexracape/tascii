@@ -12,7 +12,7 @@
                 <h4 class="price">{{ post.price }}</h4>
                 <p class="post-text">{{ post.start_loc }} -> {{ post.end_loc }}</p>
                 <p class="post-text">By {{ post.expiration_date }}</p>
-                <p class="post-text">~ {{ post.time_estimate }}</p>
+                <!-- <p class="post-text">~ {{ post.time_estimate }}</p> MAYBE ADD WHEN WE FIGURE THIS OUT LATER -->
                 <a href="{% url 'post_details' post.pk %}">Accept</a>
             </div>
         </div>
