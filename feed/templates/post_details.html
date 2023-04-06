@@ -2,21 +2,6 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-
-<<<<<<< HEAD
-<h1>{{ post.title }}</h1>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Price: {{ post.price }}</h2>
-        <h2>Start Location: {{ post.start_loc }}</h2>
-        <h2>End Location: {{ post.end_loc }}</h2>
-        <h2>Expiration Date: {{ post.expiration_date }}</h2>
-        <h2>Time Estimate: {{ post.time_estimate }}</h2>
-    </div>
-    <div class="col-md-4">
-        <h2>Posted By: {{ post.user }}</h2>
-        <h2>Posted On: {{ post.created_at }}</h2>
-=======
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8 mx-auto">
@@ -46,13 +31,7 @@
           <a href="{% url 'post_list' %}" class="btn btn-danger">Cancel</a>
         </div>
       </div>
->>>>>>> 13eb74021d08d8d44a6463e5936cc017922233e4
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-
 {% endblock %}
-=======
-{% endblock %}
->>>>>>> 13eb74021d08d8d44a6463e5936cc017922233e4
