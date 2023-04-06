@@ -14,7 +14,7 @@
             <h5 class="card-title" style="color: #555555">{{ post.title }}</h5>
             <p class="card-text text-muted">{{ post.start_loc }} &rarr; {{ post.end_loc }}</p>
             <p class="card-text text-muted">{{ post.expiration_date }}</p>
-            <h4 class="card-price">{{ post.price }}</h4>
+            <h4 class="card-price" style="color: #555555">{{ post.price }}</h4>
           </div>
           <div class="card-footer bg-white text-center">
             <a href="{% url 'post_details' post.pk %}" class="btn btn-primary">Details</a>
