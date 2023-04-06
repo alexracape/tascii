@@ -1,0 +1,79 @@
+
+.post {
+    width: 303px;
+    height: 104px;
+    background: url("../images/v132_71.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 206px;
+    left: 42px;
+    overflow: hidden;
+  }
+
+  .post-title {
+    width: 218px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 11px;
+    left: 13px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 18px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  .post-price {
+    width: 119px;
+    color: rgba(25,25,25,1);
+    position: absolute;
+    top: 17px;
+    left: 176px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  .post-location {
+    width: 138px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 79px;
+    left: 13px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 10px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  .post-expiration {
+    width: 138px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 62px;
+    left: 13px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 10px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  .accept {
+    width: 40px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 75px;
+    left: 246px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 10px;
+    opacity: 1;
+    text-align: center;
+  }
