@@ -7,4 +7,5 @@ urlpatterns = [
     path("<int:pk>/", views.post_details, name="post_details"),
     path("register/", views.register_request, name="register"),
     path("login/", views.login_request, name="login"),
+    path('post/accept/<int:pk>/', post_accept, name='post_accept'),
 ] 
