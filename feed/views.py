@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_objects_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -14,6 +14,22 @@ def feed(request):
     }
     
     return render(request, 'feed.html', context)
+
+
+# View to handle accepting a post
+def post_accept(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == 'POST':
+        # Handle post acceptance here, e.g. update the post status to accepted
+        # and notify the poster
+        post.status = 'accepted'
+        post.save()
+        messages.success(request, 'Post accepted!')
+        return redirect('post_details', pk=post.pk)
+
+    context = {'post': post}
+    return render(request, 'post_accept.html', context)
 
 
 # View to inspect the details of a post and possibly chat later
