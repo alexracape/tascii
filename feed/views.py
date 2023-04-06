@@ -16,6 +16,14 @@ def feed(request):
     return render(request, 'feed.html', context)
 
 
+# View to render profile page
+def profile(request):
+    context = {
+        'user': request.user  # This is the currently logged in user hopefully
+    }
+    return render(request, 'profile.html', context)
+
+
 # View to handle accepting a post
 def post_accept(request, pk):
     post = get_object_or_404(Post, pk=pk)

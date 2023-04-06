@@ -1,28 +1,31 @@
 {% extends "base.html" %}
-{% load static %}
-
 {% block page_content %}
 
 <h1>Feed</h1>
 
-<div class="container my-5">
-  <div class="row">
-    {% for post in posts %}
-      <div class="col-md-4 mb-4">
-        <div class="card rounded-3">
-          <div class="card-body">
-            <h5 class="card-title" style="color: #555555">{{ post.title }}</h5>
-            <p class="card-text text-muted">{{ post.start_loc }} &rarr; {{ post.end_loc }}</p>
-            <p class="card-text text-muted">{{ post.expiration_date }}</p>
-            <h4 class="card-price" style="color: #555555">{{ post.price }}</h4>
-          </div>
-          <div class="card-footer bg-white text-center">
-            <a href="{% url 'post_details' post.pk %}" class="btn btn-primary">Details</a>
-          </div>
+<div class="col">
+{% for post in posts %}
+    <div class="post col-mb-4 md-4 mx-auto">
+    <div class="card rounded-3">
+        
+        <div class="card-body row">
+            <div class="col">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text text-muted">{{ post.start_loc }} &rarr; {{ post.end_loc }}</p>
+                <p class="card-text text-muted">By {{ post.expiration_date }}</p>
+            </div>
+
+            <div class="col">
+                <h4 class="card-price">${{ post.price }}</h4>
+            </div>
         </div>
-      </div>
-    {% endfor %}
-  </div>
+
+        <div class="card-footer bg-white text-center">
+        <a href="{% url 'post_details' post.pk %}" class="btn btn-primary">Accept?</a>
+        </div>
+    </div>
+    </div>
+{% endfor %}
 </div>
 
 <a class="btn btn-primary" href="{% url 'register' %}">Register</a>

@@ -8,4 +8,5 @@ urlpatterns = [
     path("register/", views.register_request, name="register"),
     path("login/", views.login_request, name="login"),
     path('post/accept/<int:pk>/', views.post_accept, name='post_accept'),
+    path('profile/', views.profile, name='profile'),
 ] 
