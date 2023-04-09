@@ -28,18 +28,15 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'feed' %}">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sort
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Most Recent</a>
-              <a class="dropdown-item" href="#">Highest Payout</a>
+              <a class="dropdown-item" href="{% url 'feed' 'price' %}">Price</a>
+              <a class="dropdown-item" href="{% url 'feed' 'expiration_date' %}">Expiration</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">All</a>
+              <a class="dropdown-item" href="{% url 'feed' %}">Most Recent</a>
             </div>
           </li>
         </ul>
@@ -59,8 +56,13 @@
               }
           });
        </script>
+
+      {% if request.user.is_authenticated %}
+        <a class="btn btn-outline-secondary mx-1" role="button" href="{% url 'profile' %}">Profile</a>
+      {% else %}
         <a class="btn btn-outline-secondary mx-1" role="button" href="{% url 'login' %}">Log In</a>
         <a class="btn btn-dark mx-1" role="button" href="{% url 'register' %}">Sign Up</a>
+      {% endif %}
       </div>
     </nav>
 

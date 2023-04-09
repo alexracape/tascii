@@ -13,7 +13,7 @@
     <div class="card rounded-3">
         
         <div class="card-body row">
-            <div class="col-8">
+            <div class="col-9">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text text-muted">{{ post.start_loc }} &rarr; {{ post.end_loc }}</p>
                 <p class="card-text text-muted">By {{ post.expiration_date }}</p>
@@ -25,7 +25,16 @@
         </div>
 
         <div class="card-footer bg-white text-center">
-        <a href="{% url 'post_details' post.pk %}" class="btn btn-primary">Accept?</a>
+            {% if request.user.is_authenticated %}
+                {% if post.user == request.user %}
+                    <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary">Edit</a>
+                {% else %}
+                    <a href="{% url 'post_details' post.pk %}" class="btn btn-primary">Accept?</a>
+                {% endif %}
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Login to accept</a>
+            {% endif %}
+        
         </div>
     </div>
     </div>

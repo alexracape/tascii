@@ -7,16 +7,16 @@ from .forms import NewUserForm
 from feed.models import Post
 
 # Main feed view
-def feed(request):
+def feed(request, sort="created_at"):
     
     query = request.GET.get('query')
+    sort = sort if sort == 'expiration_date' else '-' + sort
     if query:
         posts = Post.objects.filter(
             Q(title__icontains=query) | Q(start_loc__icontains=query) | Q(end_loc__icontains=query)
-        )
-        print("GOT A QUERY")
+        ).order_by(sort)
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.filter(Q(status='open')).order_by(sort)
     
     context = {
         'query': query,
@@ -59,6 +59,15 @@ def post_details(request, pk):
     }
 
     return render(request, 'post_details.html', context)
+
+
+def edit_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    context = {
+        'post': post
+    }
+
+    return render(request, 'edit_post.html', context)
 
 
 # View for registering a new user

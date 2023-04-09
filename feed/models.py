@@ -11,4 +11,4 @@ class Post(models.Model):
     time_estimate = models.DurationField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, default='open')
+    status = models.CharField(max_length=20, default='open') # open, accepted, completed, cancelled
