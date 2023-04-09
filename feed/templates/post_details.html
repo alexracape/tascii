@@ -31,9 +31,9 @@
           <div class="card-footer d-flex justify-content-between">
             <form method="POST" action="{% url 'post_accept' post.id %}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-dark">Accept</button>
+              <button type="submit" class="btn btn-primary">Accept</button>
             </form>
-            <a href="{% url 'feed' %}" class="btn btn-secondary">Cancel</a>
+            <a href="{% url 'feed' %}" class="btn btn-outline-primary">Cancel</a>
           </div>
         </div>
       </div>

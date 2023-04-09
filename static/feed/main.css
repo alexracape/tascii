@@ -1,4 +1,7 @@
 
+.btn-primary{
+  background-color: var(--arc-palette-background-simple-color, blue) !important;
+}
 
 .navbar {
   background-color: black;
