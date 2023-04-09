@@ -2,14 +2,24 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.db.models import Q
 from .forms import NewUserForm
 from feed.models import Post
 
 # Main feed view
 def feed(request):
     
-    posts = Post.objects.all()
+    query = request.GET.get('query')
+    if query:
+        posts = Post.objects.filter(
+            Q(title__icontains=query) | Q(start_loc__icontains=query) | Q(end_loc__icontains=query)
+        )
+        print("GOT A QUERY")
+    else:
+        posts = Post.objects.all()
+    
     context = {
+        'query': query,
         'posts': posts
     }
     

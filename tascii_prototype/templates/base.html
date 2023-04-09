@@ -44,8 +44,12 @@
           </li>
         </ul>
         
-        <form class="form-inline my-2 my-lg-0" onsubmit="">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form method="GET" action="{% url 'feed' %}" class="form-inline my-2 my-lg-0" onsubmit="">
+          {% load crispy_forms_tags %}  
+          {% load bootstrap4 %}      
+          {% csrf_token %}
+		      {{ search_form|crispy }}    
+          <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
         </form>
         
         <script>
