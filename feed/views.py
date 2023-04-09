@@ -72,6 +72,8 @@ def edit_post(request, pk):
 
 # View for registering a new user
 def register_request(request):
+
+    context = {}
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -79,10 +81,17 @@ def register_request(request):
             login(request, user)
             messages.success(request, "Registration successful." )
             return redirect("feed")
-            
         messages.error(request, "Unsuccessful registration. Invalid information.")
-    form = NewUserForm()
-    return render (request=request, template_name="register.html", context={"register_form":form})
+        print(form.is_valid())
+
+        # if form.errors:
+        #     messages.error(request, "Unsuccessful registration. Invalid information.")
+        #     context['errors'] = form.errors
+    else:
+        form = NewUserForm()
+        
+    context["register_form"] = form
+    return render (request=request, template_name="register.html", context=context)
 
 
 # View for logging in a user
@@ -101,5 +110,6 @@ def login_request(request):
                 messages.error(request,"Invalid username or password.")
         else:
             messages.error(request,"Invalid username or password.")
-    form = AuthenticationForm()
+    else:
+        form = AuthenticationForm()
     return render(request=request, template_name="login.html", context={"login_form":form})
