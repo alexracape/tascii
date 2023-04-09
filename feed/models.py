@@ -9,6 +9,7 @@ class Post(models.Model):
     end_loc = models.CharField(max_length=100)
     expiration_date = models.DateTimeField()
     time_estimate = models.DurationField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_post_created')
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, default='open') # open, accepted, completed, cancelled
+    filled_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_post_filled', null=True, blank=True)
