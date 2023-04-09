@@ -1,6 +1,28 @@
+:root{
+  --brand-color: #f05f5f;
+}
 
 .btn-primary{
-  background-color: var(--arc-palette-background-simple-color, blue) !important;
+  background-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+}
+
+.btn-primary:hover{
+  background-color: var(--arc-palette-hover, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-hover, var(--brand-color, black)) !important;
+}
+
+.btn-outline-primary{
+  color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  background-color: transparent;
+  background-image: none;
+}
+
+.btn-outline-primary:hover{
+  color: white !important;
+  background-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
 }
 
 .navbar {
