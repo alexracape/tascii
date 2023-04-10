@@ -28,8 +28,18 @@ def feed(request, sort="created_at"):
 
 # View to render profile page
 def profile(request):
+    active_tasks = Post.objects.filter(
+        Q(status='accepted') and Q(filled_by=request.user)
+    )
+
+    complete_tasks = Post.objects.filter(
+        Q(status='completed')
+        # Q(status='completed'and Q(filled_by=user.username)
+    )
     context = {
-        'user': request.user  # This is the currently logged in user hopefully
+        'user': request.user,  # This is the currently logged in user hopefully
+        'active_tasks': active_tasks,
+        'history': complete_tasks
     }
     return render(request, 'profile.html', context)
 
@@ -42,12 +52,13 @@ def post_accept(request, pk):
         # Handle post acceptance here, e.g. update the post status to accepted
         # and notify the poster
         post.status = 'accepted'
+        post.filled_by = request.user
         post.save()
         messages.success(request, 'Post accepted!')
-        return redirect('post_details', pk=post.pk)
+        return redirect('profile')
 
     context = {'post': post}
-    return render(request, 'post_accept.html', context)
+    return render(request, 'profile.html', context)
 
 
 # View to inspect the details of a post and possibly chat later
