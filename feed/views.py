@@ -4,7 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.db.models import Q
 from .forms import NewUserForm
+from .forms import PostForm
 from feed.models import Post
+from django.http import HttpResponseRedirect
 
 # Main feed view
 def feed(request, sort="created_at"):
@@ -124,3 +126,18 @@ def login_request(request):
     else:
         form = AuthenticationForm()
     return render(request=request, template_name="login.html", context={"login_form":form})
+
+# View for making a post
+def make_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            return HttpResponseRedirect('/profile/')
+    
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = PostForm()
+
+    return render(request, 'make_post.html', {'form': form})
+

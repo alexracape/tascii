@@ -11,4 +11,5 @@ urlpatterns = [
     path('post/accept/<int:pk>/', views.post_accept, name='post_accept'),
     path('profile/', views.profile, name='profile'),
     path("<int:pk>/", views.edit_post, name="edit_post"),
+    path("make-post/", views.make_post, name="make-post"),
 ] 
