@@ -1,5 +1,32 @@
-<form action="/make-post/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+
+{% block page_content %} 
+
+{% load crispy_forms_tags %}  
+{% load bootstrap4 %}  
+
+<!--Register--> 
+<div class="container py-5">
+	<h1>Make Post</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form|crispy }}           
+		
+		{% if errors %}
+			<div class="alert alert-danger">
+				<strong>There was an error in the form submission:</strong>
+				<ul>
+					{% for field, error_list in errors.items %}
+						{% for error in error_list %}
+							<li>{{ field }}: {{ error }}</li>
+						{% endfor %}
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		
+		<button class="btn btn-primary" type="submit">Submit</button>
+
+</div>
+
+{% endblock %}
