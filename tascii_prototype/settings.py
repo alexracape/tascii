@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://hemant-to-do.herokuapp.com'
+    'https://calm-plateau-71093.herokuapp.com'
 ]
 
 ALLOWED_HOSTS = [
