@@ -25,6 +25,13 @@
   border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
 }
 
+.btn-block {
+  height: 100px;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 25px;
+}
+
 .navbar {
   background-color: black;
 }

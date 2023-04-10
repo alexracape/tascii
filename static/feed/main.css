@@ -25,6 +25,11 @@
   border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
 }
 
+.btn-accept {
+  width: 80%;
+  height: 40%;
+}
+
 .navbar {
   background-color: black;
 }

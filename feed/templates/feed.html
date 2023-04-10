@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block page_content %}
 
+
+
+<div class="col">
+
 <h1>Feed</h1>
 
 {% if query %}
     <h3>Search results for "{{ query }}"</h3>
 {% endif %}
 
-<div class="col">
 {% for post in posts %}
     <div class="post md-4 mx-auto">
     <div class="card rounded-3">
@@ -39,6 +42,11 @@
     </div>
     </div>
 {% endfor %}
+
+<div class="fixed-bottom d-flex justify-content-center">
+    <a href="{% url 'make_post' %}" class="btn-block btn-primary">Make a Post</a>
+</div>
+
 </div>
 
 {% endblock %}

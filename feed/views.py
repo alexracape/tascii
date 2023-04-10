@@ -6,7 +6,6 @@ from django.db.models import Q
 from .forms import NewUserForm
 from .forms import PostForm
 from feed.models import Post
-from django.http import HttpResponseRedirect
 
 # Main feed view
 def feed(request, sort="created_at"):
@@ -133,7 +132,8 @@ def make_post(request):
         form = PostForm(request.POST)
 
         if form.is_valid():
-            return HttpResponseRedirect('/profile/')
+            form.save(request.user)
+            return redirect('profile')
     
     # if a GET (or any other method) we'll create a blank form
     else:
