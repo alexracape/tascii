@@ -4,14 +4,40 @@
 
 {% load crispy_forms_tags %}  
 {% load bootstrap4 %}  
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
 
-<!--Register--> 
+<!--Make a Post Form--> 
 <div class="container py-5">
 	<h1>Make Post</h1>
 	<form method="POST">
 		{% csrf_token %}
-		{{ form|crispy }}           
-		
+		<div class="row mb-3">
+			<div class="col-sm-6">
+				{{ form.title|as_crispy_field }}
+			</div>
+			<div class="col-sm-6">
+				{{ form.price|as_crispy_field }}
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-6">
+				{{ form.start_loc|as_crispy_field }}
+			</div>
+			<div class="col-sm-6">
+				{{ form.end_loc|as_crispy_field }}
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-12">
+				{{ form.expiration_date|as_crispy_field }}
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-12">
+				{{ form.time_estimate|as_crispy_field }}
+			</div>
+		</div>
 		{% if errors %}
 			<div class="alert alert-danger">
 				<strong>There was an error in the form submission:</strong>
@@ -24,9 +50,9 @@
 				</ul>
 			</div>
 		{% endif %}
-		
 		<button class="btn btn-primary" type="submit">Submit</button>
-
+	</form>
 </div>
+
 
 {% endblock %}

@@ -1,10 +1,11 @@
-from datetime import date
+from datetime import date, datetime
+from django.utils import timezone
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from feed.models import Post 
-from django.forms.widgets import SelectDateWidget
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 
 class NewUserForm(UserCreationForm):
@@ -27,13 +28,32 @@ class SearchForm(forms.Form):
 
 
 class PostForm(forms.Form):
+
+    TIME_ESTIMATE_CHOICES = (
+        (5, '5 minutes'),
+        (10, '10 minutes'),
+        (15, '15 minutes'),
+        (30, '30 minutes'),
+        (60, '1 hour'),
+    )
+
     title = forms.CharField(label='Title:', max_length=100)
     price = forms.IntegerField(label = 'Price:')
     start_loc = forms.CharField(label = 'Start Location:', max_length=100)
     end_loc = forms.CharField(label = 'End Location', max_length=100)
     # expiration_date = forms.DateTimeField(label = 'Delivery window:')
-    expiration_date = forms.DateTimeField(label='Expiration:', widget=SelectDateWidget, initial=date.today())
-    time_estimate = forms.DurationField(label = 'ETA:')
+    expiration_date = forms.DateTimeField(
+        label='Expiration:',
+        widget=DateTimePickerInput(options={
+            "format": "YYYY-MM-DD HH:mm a",
+            "showClose": True,
+            "showClear": True,
+            "showTodayButton": True,
+            "sideBySide": True,
+            "stepping": 15,
+        })
+    )
+    time_estimate = forms.ChoiceField(label = 'Time Estimate:', choices=TIME_ESTIMATE_CHOICES, initial=5)
     #created_at = forms.DateTimeField(auto_now_add=True)
 
     def save(self, user, commit=True):
@@ -50,3 +70,4 @@ class PostForm(forms.Form):
         )
         post.save()
         return post
+
