@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from django.utils import timezone
 
 from django import forms
@@ -64,7 +64,7 @@ class PostForm(forms.Form):
             start_loc=cleaned_data['start_loc'],
             end_loc=cleaned_data['end_loc'],
             expiration_date=cleaned_data['expiration_date'],
-            time_estimate=cleaned_data['time_estimate'],
+            time_estimate= timedelta(minutes=int(cleaned_data['time_estimate'])),
             status='open',
             user=user
         )
