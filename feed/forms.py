@@ -51,7 +51,8 @@ class PostForm(forms.Form):
             "showTodayButton": True,
             "sideBySide": True,
             "stepping": 15,
-        })
+            "ignoreReadonly": True,
+        }, attrs={"readonly": True})
     )
     time_estimate = forms.ChoiceField(label = 'Time Estimate:', choices=TIME_ESTIMATE_CHOICES, initial=5)
     #created_at = forms.DateTimeField(auto_now_add=True)
