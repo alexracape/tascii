@@ -42,24 +42,25 @@ body {
 }
 
 .post {
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
   color: #555555;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  padding: 20px;
 }
 
 .card-title {
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: Bold;
 }
 
 .card-price {
   text-align: right;
-  font-size: 40px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .card-text {
-  font-size: 16px;
+  font-size: 1rem;
   margin-bottom: 0px;
 }
 
