@@ -82,3 +82,7 @@ body {
 .text-gray-500 {
   color: #686868;
 }
+
+.feed {
+  margin-bottom: 120px;
+}
