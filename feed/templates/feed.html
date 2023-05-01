@@ -40,6 +40,13 @@
 
 </div>
 
-
+<!--Make A Post / Login Button-->
+<div class="fixed-bottom d-flex justify-content-center">
+  {% if request.user.is_authenticated %}
+      <a href="{% url 'make_post' %}" class="btn-block btn-primary">Make a Post</a>
+  {% else %}
+      <a href="{% url 'login' %}" class="btn-block btn-primary">Login to Make a Post</a>
+  {% endif %}
+ </div>
 
 {% endblock %}

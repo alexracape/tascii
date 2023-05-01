@@ -6,6 +6,7 @@ from django.db.models import Q
 from .forms import NewUserForm
 from .forms import PostForm
 from feed.models import Post
+from datetime import timedelta
 
 # Main feed view
 def feed(request, sort="created_at"):
@@ -73,15 +74,6 @@ def post_details(request, pk):
     return render(request, 'post_details.html', context)
 
 
-def edit_post(request, pk):
-    post = Post.objects.get(pk=pk)
-    context = {
-        'post': post
-    }
-
-    return render(request, 'edit_post.html', context)
-
-
 # View for registering a new user
 def register_request(request):
 
@@ -140,4 +132,32 @@ def make_post(request):
         form = PostForm()
 
     return render(request, 'make_post.html', {'form': form})
+
+
+def edit_post(request, pk):
+    print("ENTERING EDIT VIEW")
+    post = Post.objects.get(pk=pk)
+    form = PostForm(request.POST or None, initial={
+        'title': post.title,
+        'price': post.price,
+        'start_loc': post.start_loc,
+        'end_loc': post.end_loc,
+        'expiration_date': post.expiration_date,
+        'time_estimate': post.time_estimate,
+    })
+    if form.is_valid():
+        print("FORM WAS VALID")
+        post.title = form.cleaned_data['title']
+        post.price = form.cleaned_data['price']
+        post.start_loc = form.cleaned_data['start_loc']
+        post.end_loc = form.cleaned_data['end_loc']
+        post.expiration_date = form.cleaned_data['expiration_date']
+        post.time_estimate = timedelta(minutes=int(form.cleaned_data['time_estimate']))
+        post.save()
+        return redirect('post_details', pk=post.pk)
+    context = {
+        'form': form,
+        'post': post,
+    }
+    return render(request, 'edit_post.html', context)
 
