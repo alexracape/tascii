@@ -8,7 +8,8 @@
 
 {% block page_content %}
   <div class="container mt-5">
-    <div class="row">
+    <h1>Post Details</h1>
+    <div class="row mt-5">
       <div class="col-md-8 mx-auto">
         <div class="card shadow-lg">
           <div class="card-header bg-gray-500">
@@ -31,7 +32,11 @@
           <div class="card-footer d-flex justify-content-between">
             <form method="POST" action="{% url 'post_accept' post.id %}">
               {% csrf_token %}
+              {% if post.user == request.user %}
+              <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary">Edit</a>
+              {% else %}
               <button type="submit" class="btn btn-primary">Accept</button>
+              {% endif %}   
             </form>
             <a href="{% url 'feed' %}" class="btn btn-outline-primary">Cancel</a>
           </div>
