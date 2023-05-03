@@ -10,14 +10,24 @@ from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    phone_number = forms.CharField(max_length=15, required=True)
+    venmo_tag = forms.CharField(max_length=20, required=True)
+    rating = forms.IntegerField(initial=5, widget=forms.HiddenInput())
+    tasks_completed = forms.IntegerField(initial=0, widget=forms.HiddenInput())
+    tasks_posted = forms.IntegerField(initial=0, widget=forms.HiddenInput())
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "phone_number", "venmo_tag", "password1", "password2", "rating", "tasks_completed", "tasks_posted")
 
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
+        user.phone_number = self.cleaned_data["phone_number"]
+        user.venmo_tag = self.cleaned_data["venmo_tag"]
+        user.rating = self.cleaned_data["rating"]
+        user.tasks_completed = self.cleaned_data["tasks_completed"]
+        user.tasks_posted = self.cleaned_data["tasks_posted"]
         if commit:
             user.save()
         return user
