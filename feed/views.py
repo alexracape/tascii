@@ -7,6 +7,9 @@ from .forms import NewUserForm
 from .forms import PostForm
 from feed.models import Post
 from datetime import timedelta
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Main feed view
 def feed(request, sort="created_at"):
@@ -161,3 +164,6 @@ def edit_post(request, pk):
     }
     return render(request, 'edit_post.html', context)
 
+def logout_request(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login'))
