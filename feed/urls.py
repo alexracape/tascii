@@ -2,6 +2,7 @@ from django.urls import path
 from feed import views
 
 
+
 urlpatterns = [
     path('', views.feed, name='feed'),
     path('sort=<str:sort>/', views.feed, name='feed'),
@@ -12,4 +13,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path("edit<int:pk>/", views.edit_post, name="edit_post"),
     path("make-post/", views.make_post, name="make_post"),
-] 
+    path('logout/', views.logout_request, name='logout'),
+]
