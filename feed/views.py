@@ -164,6 +164,12 @@ def edit_post(request, pk):
     }
     return render(request, 'edit_post.html', context)
 
+
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect("feed")
+
 def logout_request(request):
     logout(request)
     return HttpResponseRedirect(reverse('login'))

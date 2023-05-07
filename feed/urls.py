@@ -11,7 +11,8 @@ urlpatterns = [
     path("login/", views.login_request, name="login"),
     path('post/accept/<int:pk>/', views.post_accept, name='post_accept'),
     path('profile/', views.profile, name='profile'),
-    path("edit<int:pk>/", views.edit_post, name="edit_post"),
+    path("post/edit<int:pk>/", views.edit_post, name="edit_post"),
+    path('post/delete/<int:pk>/', views.delete_post, name="delete_post"),
     path("make-post/", views.make_post, name="make_post"),
-    path('logout/', views.logout_request, name='logout'),
+    path('logout/', views.logout_request, name='logout')
 ]

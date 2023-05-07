@@ -3,8 +3,8 @@
 }
 
 .btn-primary{
-  background-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
-  border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  background-color: var(--arc-palette-foregroundSecondary, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-foregroundSecondary, var(--brand-color, black)) !important;
 }
 
 .btn-primary:hover{
@@ -13,16 +13,16 @@
 }
 
 .btn-outline-primary{
-  color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
-  border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  color: var(--arc-palette-foregroundSecondary, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-foregroundSecondary, var(--brand-color, black)) !important;
   background-color: transparent;
   background-image: none;
 }
 
 .btn-outline-primary:hover{
   color: white !important;
-  background-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
-  border-color: var(--arc-palette-foregroundPrimary, var(--brand-color, black)) !important;
+  background-color: var(--arc-palette-foregroundSecondary, var(--brand-color, black)) !important;
+  border-color: var(--arc-palette-foregroundSecondary, var(--brand-color, black)) !important;
 }
 
 .btn-block {

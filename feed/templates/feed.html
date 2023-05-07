@@ -26,7 +26,7 @@
           <div class="card-footer bg-white text-center">
             {% if request.user.is_authenticated %}
             {% if post.user == request.user %}
-            <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary">Edit / Take Down</a>
             {% else %}
             <a href="{% url 'post_details' post.pk %}" class="btn btn-primary">Accept?</a>
             {% endif %}
