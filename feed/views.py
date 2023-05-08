@@ -10,6 +10,9 @@ from datetime import timedelta
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .forms import RatingForm 
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Main feed view
 def feed(request, sort="created_at"):
@@ -59,6 +62,7 @@ def post_accept(request, pk):
         post.status = 'accepted'
         post.filled_by = request.user
         post.save()
+
         messages.success(request, 'Post accepted!')
         return redirect('profile')
 
@@ -173,3 +177,22 @@ def delete_post(request, pk):
 def logout_request(request):
     logout(request)
     return HttpResponseRedirect(reverse('login'))
+
+# View to handle creating a review
+@login_required
+def make_review(request, user_id):
+    reviewed_user = get_object_or_404(User, pk=user_id)
+
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+
+        if form.is_valid():
+            review = form.save(post=Post.objects.filter(user=reviewed_user).first(), user=request.user)
+            messages.success(request, 'Review saved!')
+            return redirect('profile')
+
+    else:
+        form = RatingForm()
+
+    context = {'form': form, 'reviewed_user': reviewed_user}
+    return render(request, 'make_review.html', context)

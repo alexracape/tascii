@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from feed.models import Post 
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+from .models import Rating 
 
 
 class NewUserForm(UserCreationForm):
@@ -81,4 +82,28 @@ class PostForm(forms.Form):
         )
         post.save()
         return post
+    
+class RatingForm(forms.Form):
+
+    RATING_CHOICES = (
+        (1, '1 Star'),
+        (2, '2 Stars'),
+        (3, '3 Stars'),
+        (4, '4 Stars'),
+        (5, '5 Stars'),
+    )
+
+    comment = forms.CharField(label='Comment:', max_length=500)
+    rating = forms.ChoiceField(label='Rating:', choices=RATING_CHOICES, widget=forms.RadioSelect())
+
+    def save(self, post, user):
+        cleaned_data = super().clean()
+        rating = Rating(
+            post=post,
+            user=user,
+            comment=cleaned_data['comment'],
+            rating=cleaned_data['rating'],
+        )
+        rating.save()
+        return rating
 

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block page_content %} 
+
+{% load crispy_forms_tags %}  
+{% load bootstrap4 %}  
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
+
+<!--Make a Review Form--> 
+<div class="container py-5">
+	<h1>Make Review</h1>
+	<form method="POST">
+		{% csrf_token %}
+		<div class="row mb-3">
+			<div class="col-sm-12">
+				{{ form.comment|as_crispy_field }}
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-12">
+				{{ form.rating|as_crispy_field }}
+			</div>
+		</div>
+		{% if errors %}
+			<div class="alert alert-danger">
+				<strong>There was an error in the form submission:</strong>
+				<ul>
+					{% for field, error_list in errors.items %}
+						{% for error in error_list %}
+							<li>{{ field }}: {{ error }}</li>
+						{% endfor %}
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+</div>
+
+{% endblock %}
