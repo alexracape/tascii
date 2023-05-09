@@ -44,10 +44,18 @@ def profile(request):
         Q(status='completed')
         # Q(status='completed'and Q(filled_by=user.username)
     )
+
+    posted_tasks = Post.objects.filter(
+        Q(user_id=request.user)
+    )
+
+
+
     context = {
         'user': request.user,  # This is the currently logged in user hopefully
         'active_tasks': active_tasks,
-        'history': complete_tasks
+        'history': complete_tasks,
+        'posted_tasks': posted_tasks
     }
     return render(request, 'profile.html', context)
 
