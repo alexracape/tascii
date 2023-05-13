@@ -49,8 +49,6 @@ def profile(request):
         Q(user_id=request.user)
     )
 
-
-
     context = {
         'user': request.user,  # This is the currently logged in user hopefully
         'active_tasks': active_tasks,
@@ -58,6 +56,17 @@ def profile(request):
         'posted_tasks': posted_tasks
     }
     return render(request, 'profile.html', context)
+
+def signup(request):
+    if request.method == 'POST':
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # redirect to a success page
+    else:
+        form = NewUserForm()
+    return render(request, 'profile.html', {'form': form})
+
 
 
 # View to handle accepting a post

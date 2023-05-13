@@ -1,7 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+
+
+class User(AbstractUser):
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
+    venmo_tag = models.CharField(max_length=20)
+    rating = models.IntegerField()
+    tasks_completed = models.IntegerField()
+    tasks_posted = models.IntegerField()
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     price = models.IntegerField()

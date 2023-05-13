@@ -1,15 +1,14 @@
 from datetime import timedelta
 from django.utils import timezone
-
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from feed.models import Post 
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 from .models import Rating 
+from .models import NewUser
 
-
-class NewUserForm(UserCreationForm):
+class NewUserForm(NewUser):
     email = forms.EmailField(required=True)
     phone_number = forms.CharField(max_length=15, required=True)
     venmo_tag = forms.CharField(max_length=20, required=True)
@@ -52,7 +51,6 @@ class PostForm(forms.Form):
     price = forms.IntegerField(label = 'Price:')
     start_loc = forms.CharField(label = 'Start Location:', max_length=100)
     end_loc = forms.CharField(label = 'End Location', max_length=100)
-    # expiration_date = forms.DateTimeField(label = 'Delivery window:')
     expiration_date = forms.DateTimeField(
         label='Expiration:',
         widget=DateTimePickerInput(options={
@@ -66,7 +64,6 @@ class PostForm(forms.Form):
         }, attrs={"readonly": True})
     )
     time_estimate = forms.ChoiceField(label = 'Time Estimate:', choices=TIME_ESTIMATE_CHOICES, initial=5)
-    #created_at = forms.DateTimeField(auto_now_add=True)
 
     def save(self, user, commit=True):
         cleaned_data = super().clean()
