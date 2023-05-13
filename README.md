@@ -1,4 +1,6 @@
-# tascii
-Prototype for the Tascii web app
+# Tascii
 
-To get started, run ```python manage.py runserver```
+An online marketplace for helping with daily tasks on a college campus
+
+[Check it out](https://calm-plateau-71093.herokuapp.com/)
+
