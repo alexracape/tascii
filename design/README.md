@@ -1,6 +1,6 @@
 # Design Documentation
 
-# Home Page
+## Home Page
 For the home page we took inspiration from social media platforms like YikYak which are already popular amongst college students. We had to carefully think about what information we wanted to include in each post, and we ultimately decided on a stripped down card that displays the essential information about each post. Then users can click on it to see more details about the post. 
 
 In our initial prototypes, users found the interface to be confusing and difficult to navigate. We didn't have a clear way to go back to the home page, and it wasn't clear which page was most relevant. We also used conflicting language describe the main page. For example, we used 'post', 'task', and 'request' to refer to the same thing which was confusing for first time users.
