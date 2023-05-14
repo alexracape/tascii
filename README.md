@@ -13,3 +13,5 @@ Each folder contains different information relating to this design process.
 - `data` contains the raw data we collected during needfinding and usability studies
 - `design` contains screenshots of the user interface along with some some commentary about our design decisions
 - `final_report` contains a LaTeX document and a pdf with an overarching review of our work
+
+These folders all contain there own documentation which goes into greater detail. We encourage you to dig around and check out our work!
